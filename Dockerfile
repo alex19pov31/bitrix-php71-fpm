@@ -6,8 +6,9 @@ RUN apk add tzdata && \
 	[ -f /etc/localtime ] && rm /etc/localtime; \
 	ln -s /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
 	addgroup -g 1000 nginx && adduser -D -u 1000 -G nginx nginx && \
-	apk add curl wget git msmtp libpng-dev freetype libjpeg-turbo-dev libmcrypt-dev freetype-dev libcurl curl-dev libxml2-dev autoconf g++ make && \
+	apk add re2c graphviz curl wget git msmtp libpng-dev freetype libjpeg-turbo-dev libmcrypt-dev freetype-dev libcurl curl-dev libxml2-dev autoconf g++ make && \
 	pecl install -f xdebug && \
+	pecl install xhprof && \
 	docker-php-ext-enable xdebug && \
 	docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
 	docker-php-ext-configure soap && \
